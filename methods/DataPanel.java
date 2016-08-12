@@ -147,7 +147,7 @@ public class DataPanel extends JPanel{
 			
 			try {
 				fiscalCode += FCCalculations.controlCalc(fiscalCode);
-			} catch (InterruptedException e) {System.out.println(e);}
+			} catch (InterruptedException e) {System.out.println("Error in calcListener");}
 			if (fiscalCode.length() == 16)
 				resultField.setText("  " + fiscalCode);
 		}
