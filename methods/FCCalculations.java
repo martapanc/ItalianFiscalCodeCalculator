@@ -213,8 +213,9 @@ public class FCCalculations {
 		List<Town> townList = new ArrayList<Town>();
 		String townCode = "0";
 		townStr = townStr.toUpperCase();
-		try (BufferedReader read = new BufferedReader(new FileReader("src/FiscalCodeCalculator/TownCodeList.txt"))) {
-            String line = read.readLine();
+		//try (BufferedReader read = new BufferedReader(new FileReader("/home/marta/workspace/ItalianFiscalCodeCalculator/FiscalCodeCalculator/TownCodeList.txt"))) {
+		try (BufferedReader read = new BufferedReader(new InputStreamReader(FCCalculations.class.getResourceAsStream("/TownCodeList.txt")))) {
+			String line = read.readLine();
             String town[];
             while (line != null ) {
             	town = line.split(";");
