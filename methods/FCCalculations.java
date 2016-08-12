@@ -189,12 +189,12 @@ public class FCCalculations {
 						case 11: {result += "S"; break;}
 						case 12: {result += "T"; break;}
 					}	
-					switch (fm) { //add 40 in female case, and add 0 in case the date has only one digit (only in male case)
+					switch (fm) { //add 40 in female case, and add 0 in case the date has only one digit (possible only in male case)
 					case "f": {result += (day + 40); break;}
 					case "m": {result += (day <= 10 ? "0" + day : day); break;}
 					}
 				}
-				catch (NumberFormatException e) { System.out.println(e); }
+				catch (NumberFormatException e) { System.out.println("Check numeric input."); }
 				return result;
 			}
 			else {
@@ -210,7 +210,7 @@ public class FCCalculations {
 	}
 	
 	public static String townCalc(String townStr) throws IOException {
-		List<Town> townList = new ArrayList<Town>();
+		List<Town> townList = new ArrayList<>();
 		String townCode = "0";
 		townStr = townStr.toUpperCase();
 		//try (BufferedReader read = new BufferedReader(new FileReader("/home/marta/workspace/ItalianFiscalCodeCalculator/FiscalCodeCalculator/TownCodeList.txt"))) {
@@ -291,13 +291,11 @@ public class FCCalculations {
 	}
 	
 	public static boolean allLetters(String str) {
-		if (Pattern.matches("[a-zA-Z]+", str)) return true;
-        else return false;
+		return (Pattern.matches("[a-zA-Z]+", str));
 	}
 	
 	public static boolean allDigits(String str) {
-		if (Pattern.matches("[0-9]+", str)) return true;
-		else return false;
+		return (Pattern.matches("[0-9]+", str));
 	}
 	
 	public static int howManyConsonants(String str) {
@@ -329,9 +327,8 @@ public class FCCalculations {
 		int year;
 		if (allDigits(yearStr)) {
 			year = Integer.parseInt(yearStr);
-			if (year >= 1900 && year <= currentYear)
-				return true;
-			else return false;
+			return (year >= 1900 && year <= currentYear);
+
 		}
 		else return false;
 	}
