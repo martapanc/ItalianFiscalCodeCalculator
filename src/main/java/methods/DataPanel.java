@@ -177,18 +177,18 @@ public class DataPanel extends JPanel {
             String year = yearField.getText();
             String town = townField.getText();
 
-            String fiscalCode = FCCalculations.computeSurname (surname);
-            fiscalCode += FCCalculations.computeName (name);
-            fiscalCode += FCCalculations.dateCalc(birthday, month, year, fm);
+            String fiscalCode = ComputeFiscalCode.computeSurname (surname);
+            fiscalCode += ComputeFiscalCode.computeName (name);
+            fiscalCode += ComputeFiscalCode.computeDateOfBirth (birthday, month, year, fm);
 
             try {
-                fiscalCode += FCCalculations.townCalc(town);
+                fiscalCode += ComputeFiscalCode.computeTownOfBirth (town);
             } catch (IOException e) {
                 System.out.println("Town codes file not found");
             }
 
             try {
-                fiscalCode += FCCalculations.controlCalc(fiscalCode);
+                fiscalCode += ComputeFiscalCode.computeControlChar (fiscalCode);
             } catch (InterruptedException e) {
                 System.out.println("Error in calcListener");
             }

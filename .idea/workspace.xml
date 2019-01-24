@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c61ea7c7-6be9-421a-b7ef-abb01738c16e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/ItalianFiscalCodeCalculator.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/methods/DataPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/methods/DataPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/methods/FCCalculations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/methods/ComputeFiscalCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CalculationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CalculationsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/methods/DataPanel$calcListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/methods/DataPanel$calcListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/methods/FCCalculations.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/CalculationsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CalculationsTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,20 +23,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/CalculationsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1000">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="-1354">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -68,17 +62,40 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/methods/FCCalculations.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/methods/ComputeFiscalCode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1830">
-              <caret line="122" column="36" selection-start-line="122" selection-start-column="36" selection-end-line="122" selection-end-column="36" />
+            <state relative-caret-position="153">
+              <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#13173#13174#0" expanded="true" />
-                <element signature="e#13225#13226#0" expanded="true" />
-                <element signature="e#13274#13275#0" expanded="true" />
-                <element signature="e#13323#13324#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/methods/NameAndSurnameComputations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/methods/FunctionChecks.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#290#291#0" expanded="true" />
+                <element signature="e#349#350#0" expanded="true" />
+                <element signature="e#405#406#0" expanded="true" />
+                <element signature="e#461#462#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,6 +155,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -146,6 +164,9 @@
       <find>towncodelist</find>
       <find>t</find>
       <find>[B-DF-HJ-NP-TV-Z]</find>
+      <find>NameAndSurnameComputations</find>
+      <find>FunctionChecks</find>
+      <find>Function</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -168,9 +189,13 @@
         <option value="$PROJECT_DIR$/src/main/java/methods/ControlThreads.java" />
         <option value="$PROJECT_DIR$/src/main/java/methods/Town.java" />
         <option value="$PROJECT_DIR$/src/main/java/methods/DataPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/methods/FCCalculations.java" />
         <option value="$PROJECT_DIR$/src/test/java/CalculationsTest.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/methods/FCCalculations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/methods/CheckFunctions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/methods/NameAndSurnameComputations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/methods/FunctionChecks.java" />
+        <option value="$PROJECT_DIR$/src/main/java/methods/ComputeFiscalCode.java" />
       </list>
     </option>
   </component>
@@ -282,7 +307,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548371135990" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548373034325" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last.edited.regexp" value="MA" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -293,15 +318,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="methods.NameAndSurnameComputations" />
+      <recent name="methods.CheckFunctions" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/test/java" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -376,7 +405,7 @@
       <workItem from="1548361711023" duration="3031000" />
       <workItem from="1548365459188" duration="789000" />
       <workItem from="1548367211321" duration="1028000" />
-      <workItem from="1548368293444" duration="2808000" />
+      <workItem from="1548368293444" duration="4604000" />
     </task>
     <servers />
   </component>
@@ -387,15 +416,18 @@
     <history-entry file="CalculationsTest - 2019.01.24 at 23h 00m 15s.xml">
       <configuration name="CalculationsTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CalculationsTest - 2019.01.24 at 23h 31m 21s.xml">
+      <configuration name="CalculationsTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7656000" />
+    <option name="totallyTimeSpent" value="9452000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.68041235" visible="true" weight="0.26037195" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.68041235" visible="true" weight="0.26037195" />
       <window_info id="Structure" order="1" sideWeight="0.31958762" side_tool="true" visible="true" weight="0.26037195" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -404,7 +436,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32884097" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.47708896" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47708896" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -486,16 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/methods/DataPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="194" selection-start-line="194" selection-end-line="194" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/methods/ControlThreads.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5579">
@@ -509,34 +531,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/methods/FCCalculations.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="122" column="36" selection-start-line="122" selection-start-column="36" selection-end-line="122" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#13173#13174#0" expanded="true" />
-            <element signature="e#13225#13226#0" expanded="true" />
-            <element signature="e#13274#13275#0" expanded="true" />
-            <element signature="e#13323#13324#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/CalculationsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1000">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="-1354">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/main/java/methods/DataPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="257">
+          <caret line="194" selection-start-line="194" selection-end-line="194" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/methods/NameAndSurnameComputations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/methods/FunctionChecks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#405#406#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/methods/ComputeFiscalCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="31" column="22" lean-forward="true" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
