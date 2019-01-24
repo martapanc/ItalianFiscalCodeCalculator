@@ -1,15 +1,14 @@
+import methods.DataPanel;
+import methods.FCCalculations;
+import methods.Town;
 
-
-import java.lang.reflect.Method;
+import javax.swing.*;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import javax.swing.JFrame;
-import methods.DataPanel;
-import methods.FCCalculations;
-import methods.Town;
 
 public class FiscalCodeCalculator {
 	
