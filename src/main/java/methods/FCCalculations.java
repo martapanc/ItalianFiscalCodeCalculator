@@ -1,15 +1,22 @@
 package methods;
 
-import java.io.*;
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.regex.*;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FCCalculations {
 
-    public static String surnameCalc (String input) {
+    public static String surnameCalc(String input) {
         String error = "0";
         input = replaceSpecialChars(input);
         if (allLetters(input)) {
@@ -18,22 +25,23 @@ public class FCCalculations {
             input = input.toUpperCase();
             Pattern p;
             Matcher m;
-            if (input.length() < 3)  {
+            if (input.length() < 3) {
                 result = input;
-                while (result.length() < 3)
-                    result += "X";
-            }
-            else
+                while (result.length() < 3) result += "X";
+            } else
                 switch (howManyConsonants(input)) {
-                    case 0: {//if there are no consonants, it picks the first 3 vowels
+                    case 0:
+                    { // if there are no consonants, it picks the first 3 vowels
                         p = Pattern.compile("[AEIOU]");
                         m = p.matcher(input);
-                        while (cont <=3) {
+                        while (cont <= 3) {
                             result += m.group(cont);
                             cont++;
                         }
-                    } break;
-                    case 1: { //1 consonant case: pick the first consonant and first 2 vowels
+                    }
+                    break;
+                    case 1:
+                    { // 1 consonant case: pick the first consonant and first 2 vowels
                         p = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
                         m = p.matcher(input);
                         while (m.find() && cont <= 1) {
@@ -47,8 +55,10 @@ public class FCCalculations {
                             result += m.group();
                             cont++;
                         }
-                    }	break;
-                    case 2:{ //2 consonants case: pick the first 2 consonants and first vowel
+                    }
+                    break;
+                    case 2:
+                    { // 2 consonants case: pick the first 2 consonants and first vowel
                         p = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
                         m = p.matcher(input);
                         while (m.find() && cont <= 2) {
@@ -62,8 +72,10 @@ public class FCCalculations {
                             result += m.group();
                             cont++;
                         }
-                    }	break;
-                    default: { //default case: pick the first 3 consonants
+                    }
+                    break;
+                    default:
+                    { // default case: pick the first 3 consonants
                         p = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
                         m = p.matcher(input);
                         while (m.find() && cont <= 3) {
@@ -73,9 +85,12 @@ public class FCCalculations {
                     }
                 }
             return result;
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Please insert a valid input in \"Surname\" field.", "Error", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Please insert a valid input in \"Surname\" field.",
+                    "Error",
+                    JOptionPane.WARNING_MESSAGE);
             return error;
         }
     }
@@ -90,23 +105,24 @@ public class FCCalculations {
             Pattern pattern;
             Matcher matcher;
 
-            //Case name length less than 3
-            if (inputName.length() < 3)  {
+            // Case name length less than 3
+            if (inputName.length() < 3) {
                 result = inputName;
-                while (result.length() < 3)
-                    result += "X";
-            }
-            else
+                while (result.length() < 3) result += "X";
+            } else
                 switch (howManyConsonants(inputName)) {
-                    case 0: { //if there are no consonants, it picks the first 3 vowels
+                    case 0:
+                    { // if there are no consonants, it picks the first 3 vowels
                         pattern = Pattern.compile("[AEIOU]");
                         matcher = pattern.matcher(inputName);
-                        while (cont <=3) {
+                        while (cont <= 3) {
                             result += matcher.group(cont);
                             cont++;
                         }
-                    } break;
-                    case 1: { //1 consonant case: pick the first consonant and first 2 vowels
+                    }
+                    break;
+                    case 1:
+                    { // 1 consonant case: pick the first consonant and first 2 vowels
                         pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
                         matcher = pattern.matcher(inputName);
                         while (matcher.find() && cont <= 1) {
@@ -120,8 +136,10 @@ public class FCCalculations {
                             result += matcher.group();
                             cont++;
                         }
-                    } break;
-                    case 2:{ //2 consonants case: pick the first 2 consonants and first vowel
+                    }
+                    break;
+                    case 2:
+                    { // 2 consonants case: pick the first 2 consonants and first vowel
                         pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
                         matcher = pattern.matcher(inputName);
                         while (matcher.find() && cont <= 2) {
@@ -135,16 +153,20 @@ public class FCCalculations {
                             result += matcher.group();
                             cont++;
                         }
-                    } break;
-                    case 3: { //3 consonant case pick all 3 consonants
+                    }
+                    break;
+                    case 3:
+                    { // 3 consonant case pick all 3 consonants
                         pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
                         matcher = pattern.matcher(inputName);
                         while (matcher.find() && cont <= 3) {
                             result += matcher.group();
                             cont++;
                         }
-                    } break;
-                    default: { //default case: pick 1st, 3rd and 4th consonant;
+                    }
+                    break;
+                    default:
+                    { // default case: pick 1st, 3rd and 4th consonant;
                         pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
                         matcher = pattern.matcher(inputName);
                         while (matcher.find() && cont <= 4) {
@@ -155,10 +177,14 @@ public class FCCalculations {
                 }
             return result;
 
+        } else {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Please insert a valid input in \"Name\" field.",
+                    "Error",
+                    JOptionPane.WARNING_MESSAGE);
+            return error;
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Please insert a valid input in \"Name\" field.", "Error", JOptionPane.WARNING_MESSAGE);
-            return error;}
     }
 
     public static String dateCalc(String dayStr, String monthStr, String yearStr, String fm) {
@@ -170,39 +196,98 @@ public class FCCalculations {
                     int day = Integer.parseInt(dayStr);
                     int month = Integer.parseInt(monthStr);
                     int year = Integer.parseInt(yearStr);
-                    if (year % 100 >= 10) //get the last 2 digits of the year
+                    if (year % 100 >= 10) // get the last 2 digits of the year
                         result += (year % 100);
                     else result = result + 0 + (year % 100);
 
-                    switch (month) { //get the letter corresponding to the month
-                        case 1: {result += "A"; break;}
-                        case 2: {result += "B"; break;}
-                        case 3: {result += "C"; break;}
-                        case 4: {result += "D"; break;}
-                        case 5: {result += "E"; break;}
-                        case 6: {result += "H"; break;}
-                        case 7: {result += "L"; break;}
-                        case 8: {result += "M"; break;}
-                        case 9: {result += "P"; break;}
-                        case 10: {result += "R"; break;}
-                        case 11: {result += "S"; break;}
-                        case 12: {result += "T"; break;}
+                    switch (month) { // get the letter corresponding to the month
+                        case 1:
+                        {
+                            result += "A";
+                            break;
+                        }
+                        case 2:
+                        {
+                            result += "B";
+                            break;
+                        }
+                        case 3:
+                        {
+                            result += "C";
+                            break;
+                        }
+                        case 4:
+                        {
+                            result += "D";
+                            break;
+                        }
+                        case 5:
+                        {
+                            result += "E";
+                            break;
+                        }
+                        case 6:
+                        {
+                            result += "H";
+                            break;
+                        }
+                        case 7:
+                        {
+                            result += "L";
+                            break;
+                        }
+                        case 8:
+                        {
+                            result += "M";
+                            break;
+                        }
+                        case 9:
+                        {
+                            result += "P";
+                            break;
+                        }
+                        case 10:
+                        {
+                            result += "R";
+                            break;
+                        }
+                        case 11:
+                        {
+                            result += "S";
+                            break;
+                        }
+                        case 12:
+                        {
+                            result += "T";
+                            break;
+                        }
                     }
-                    switch (fm) { //add 40 in female case, and add 0 in case the date has only one digit (possible only in male case)
-                        case "f": {result += (day + 40); break;}
-                        case "m": {result += (day <= 10 ? "0" + day : day); break;}
+                    switch (fm) { // add 40 in female case, and add 0 in case the date has only one digit
+                        // (possible only in male case)
+                        case "f":
+                        {
+                            result += (day + 40);
+                            break;
+                        }
+                        case "m":
+                        {
+                            result += (day <= 10 ? "0" + day : day);
+                            break;
+                        }
                     }
+                } catch (NumberFormatException e) {
+                    System.out.println("Check numeric input.");
                 }
-                catch (NumberFormatException e) { System.out.println("Check numeric input."); }
                 return result;
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Invalid date", "Error", JOptionPane.WARNING_MESSAGE);
                 return dateError;
             }
-        }
-        else {
-            String message = "Please insert a numeric value between 1900 and " + Calendar.getInstance().get(Calendar.YEAR) + " in \"Year\" field.";
+        } else {
+            String message =
+                    "Please insert a numeric value between 1900 and "
+                            + Calendar.getInstance().get(Calendar.YEAR)
+                            + " in \"Year\" field.";
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.WARNING_MESSAGE);
             return yearError;
         }
@@ -212,11 +297,14 @@ public class FCCalculations {
         List<Town> townList = new ArrayList<>();
         String townCode = "0";
         townStr = townStr.toUpperCase();
-        //try (BufferedReader read = new BufferedReader(new FileReader("/home/marta/workspace/ItalianFiscalCodeCalculator/FiscalCodeCalculator/TownCodeList.txt"))) {
-        try (BufferedReader read = new BufferedReader(new InputStreamReader(FCCalculations.class.getResourceAsStream("/TownCodeList.txt")))) {
+        // try (BufferedReader read = new BufferedReader(new
+        // FileReader("/home/marta/workspace/ItalianFiscalCodeCalculator/FiscalCodeCalculator/TownCodeList.txt"))) {
+        try (BufferedReader read =
+                     new BufferedReader(
+                             new InputStreamReader(FCCalculations.class.getResourceAsStream("/TownCodeList.txt")))) {
             String line = read.readLine();
             String town[];
-            while (line != null ) {
+            while (line != null) {
                 town = line.split(";");
                 townList.add(new Town(town[0], town[1]));
                 line = read.readLine();
@@ -230,11 +318,13 @@ public class FCCalculations {
                 i++;
             }
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "File was not found", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(
+                    null, "File was not found", "Error", JOptionPane.WARNING_MESSAGE);
         }
 
         if (townCode.equals("0"))
-            JOptionPane.showMessageDialog(null, "Town was not found", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(
+                    null, "Town was not found", "Error", JOptionPane.WARNING_MESSAGE);
         return townCode;
     }
 
@@ -255,35 +345,139 @@ public class FCCalculations {
             t2.join();
             evenSum = et.getEvenSum();
 
-            //The remainder of the division is the control character
+            // The remainder of the division is the control character
             int sum = (oddSum + evenSum) % 26;
             switch (sum) {
-                case 0:{control = "A"; break;}
-                case 1:{control = "B"; break;}
-                case 2:{control = "C"; break;}
-                case 3:{control = "D"; break;}
-                case 4:{control = "E"; break;}
-                case 5:{control = "F"; break;}
-                case 6:{control = "G"; break;}
-                case 7:{control = "H"; break;}
-                case 8:{control = "I"; break;}
-                case 9:{control = "J"; break;}
-                case 10:{control = "K"; break;}
-                case 11:{control = "L"; break;}
-                case 12:{control = "M"; break;}
-                case 13:{control = "N"; break;}
-                case 14:{control = "O"; break;}
-                case 15:{control = "P"; break;}
-                case 16:{control = "Q"; break;}
-                case 17:{control = "R"; break;}
-                case 18:{control = "S"; break;}
-                case 19:{control = "T"; break;}
-                case 20:{control = "U"; break;}
-                case 21:{control = "V"; break;}
-                case 22:{control = "W"; break;}
-                case 23:{control = "X"; break;}
-                case 24:{control = "Y"; break;}
-                case 25:{control = "Z"; break;}
+                case 0:
+                {
+                    control = "A";
+                    break;
+                }
+                case 1:
+                {
+                    control = "B";
+                    break;
+                }
+                case 2:
+                {
+                    control = "C";
+                    break;
+                }
+                case 3:
+                {
+                    control = "D";
+                    break;
+                }
+                case 4:
+                {
+                    control = "E";
+                    break;
+                }
+                case 5:
+                {
+                    control = "F";
+                    break;
+                }
+                case 6:
+                {
+                    control = "G";
+                    break;
+                }
+                case 7:
+                {
+                    control = "H";
+                    break;
+                }
+                case 8:
+                {
+                    control = "I";
+                    break;
+                }
+                case 9:
+                {
+                    control = "J";
+                    break;
+                }
+                case 10:
+                {
+                    control = "K";
+                    break;
+                }
+                case 11:
+                {
+                    control = "L";
+                    break;
+                }
+                case 12:
+                {
+                    control = "M";
+                    break;
+                }
+                case 13:
+                {
+                    control = "N";
+                    break;
+                }
+                case 14:
+                {
+                    control = "O";
+                    break;
+                }
+                case 15:
+                {
+                    control = "P";
+                    break;
+                }
+                case 16:
+                {
+                    control = "Q";
+                    break;
+                }
+                case 17:
+                {
+                    control = "R";
+                    break;
+                }
+                case 18:
+                {
+                    control = "S";
+                    break;
+                }
+                case 19:
+                {
+                    control = "T";
+                    break;
+                }
+                case 20:
+                {
+                    control = "U";
+                    break;
+                }
+                case 21:
+                {
+                    control = "V";
+                    break;
+                }
+                case 22:
+                {
+                    control = "W";
+                    break;
+                }
+                case 23:
+                {
+                    control = "X";
+                    break;
+                }
+                case 24:
+                {
+                    control = "Y";
+                    break;
+                }
+                case 25:
+                {
+                    control = "Z";
+                    break;
+                }
             }
         }
         return control;
@@ -303,8 +497,7 @@ public class FCCalculations {
             str = str.toUpperCase();
             Pattern pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]+");
             Matcher matcher = pattern.matcher(str);
-            while (matcher.find())
-                match += matcher.group();
+            while (matcher.find()) match += matcher.group();
         }
         return match.length();
     }
@@ -315,8 +508,7 @@ public class FCCalculations {
             str = str.toUpperCase();
             Pattern pattern = Pattern.compile("[AEIOU]+");
             Matcher matcher = pattern.matcher(str);
-            while (matcher.find())
-                match += matcher.group();
+            while (matcher.find()) match += matcher.group();
         }
         return match.length();
     }
@@ -328,12 +520,11 @@ public class FCCalculations {
             year = Integer.parseInt(yearStr);
             return (year >= 1900 && year <= currentYear);
 
-        }
-        else return false;
+        } else return false;
     }
 
     public static boolean isDateValid(String day, String month, String year) {
-        //Check whether a date is valid or not (e.g. 29/02/2001)
+        // Check whether a date is valid or not (e.g. 29/02/2001)
         if (isYearValid(year)) {
             String dateToCheck = day + "-" + month + "-" + year;
             Calendar.getInstance();
@@ -343,33 +534,34 @@ public class FCCalculations {
                 sdf.parse(dateToCheck);
                 Date date = sdf.parse(dateToCheck);
                 Date current = Calendar.getInstance().getTime();
-                if (date.after(current)) //You cannot calculate a fiscal code if the birthday is after the current day
+                if (date.after(
+                        current)) // You cannot calculate a fiscal code if the birthday is after the current day
                     return false;
+            } catch (ParseException e) {
+                return false;
             }
-            catch (ParseException e) {return false;}
 
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     public static String replaceSpecialChars(String input) {
-        //If the name or surname include stressed letters (à,è,ì...) or other special characters (ä,ç,ß,...), it replaces them with corresponding letter (e.g. à = a)
-        input = input.toUpperCase();
-        input = input.replaceAll("[ÀÁÂÃÅĀ]", "A");
-        input = input.replaceAll("[ÄÆ]", "AE");
-        input = input.replaceAll("[ÈÉÊËĘĖĒ]", "E");
-        input = input.replaceAll("[ÌÍÎÏĮĪ]", "I");
-        input = input.replaceAll("[ÒÓÔÕOŌ]", "O");
-        input = input.replaceAll("[ÖŒØ]", "OE");
-        input = input.replaceAll("[ÙÚÛŪ]", "U");
-        input = input.replaceAll("[Ü]", "UE");
-        input = input.replaceAll("[ŚŠ]", "S");
-        input = input.replaceAll("ß", "SS");
-        input = input.replaceAll("[ÇĆČ]", "C");
-        input = input.replaceAll(" ", "");
-        input = input.replaceAll("-", "");
-        input = input.replaceAll("'", "");
-        return input;
+        /* If the name or surname include stressed letters (à,è,ì...) or other special characters (ä,ç,ß,...), it replaces them with corresponding letter (e.g. à = a) */
+        return input
+                .toUpperCase()
+                .replaceAll("[ÀÁÂÃÅĀ]", "A")
+                .replaceAll("[ÄÆ]", "AE")
+                .replaceAll("[ÈÉÊËĘĖĒ]", "E")
+                .replaceAll("[ÌÍÎÏĮĪ]", "I")
+                .replaceAll("[ÒÓÔÕOŌ]", "O")
+                .replaceAll("[ÖŒØ]", "OE")
+                .replaceAll("[ÙÚÛŪ]", "U")
+                .replaceAll("[Ü]", "UE")
+                .replaceAll("[ŚŠ]", "S")
+                .replaceAll("ß", "SS")
+                .replaceAll("[ÇĆČ]", "C")
+                .replaceAll(" ", "")
+                .replaceAll("-", "")
+                .replaceAll("'", "");
     }
 }

@@ -4,7 +4,7 @@ public class Town {
 
     String townName, townCode;
 
-    public Town (String townName, String townCode) {
+    public Town(String townName, String townCode) {
         this.townName = townName;
         this.townCode = townCode;
     }
@@ -13,12 +13,12 @@ public class Town {
         return townName;
     }
 
-    public String getTownCode() {
-        return townCode;
-    }
-
     public void setTownName(String newName) {
         townName = newName;
+    }
+
+    public String getTownCode() {
+        return townCode;
     }
 
     public void setTownCode(String newCode) {
