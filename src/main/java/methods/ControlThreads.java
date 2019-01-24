@@ -1,20 +1,20 @@
 package methods;
 
 public class ControlThreads {
-	
+
 	public ControlThreads() {}
 }
 
 class EvenThread implements Runnable {
-	
+
 	String fisCode;
 	int evenSum;
-	
+
 	public EvenThread(String fisCode, int evenSum) {
 		this.fisCode = fisCode;
 		this.evenSum = evenSum;
 	}
-	
+
 	@Override
 	public void run() {
 		//calculate sum of character values at even position
@@ -57,19 +57,19 @@ class EvenThread implements Runnable {
 				case 'Y': {evenSum += 24; break;}
 				case 'Z': {evenSum += 25; break;}
 			}
-		}	
+		}
 	}
-	
+
 	public int getEvenSum() {
 		return evenSum;
 	}
 }
 
 class OddThread implements Runnable {
-	
+
 	String fisCode;
 	int oddSum;
-	
+
 	public OddThread(String fisCode, int oddSum) {
 		this.fisCode = fisCode;
 		this.oddSum = oddSum;
@@ -116,10 +116,10 @@ class OddThread implements Runnable {
 				case 'Y': {oddSum += 24; break;}
 				case 'Z': {oddSum += 23; break;}
 			}
-		}	
+		}
 	}
-	
+
 	public int getOddSum() {
 		return oddSum;
-	}	
+	}
 }
