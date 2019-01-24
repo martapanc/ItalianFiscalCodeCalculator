@@ -83,8 +83,10 @@ public class DataPanel extends JPanel {
         datePanel.setPreferredSize(new Dimension(180, 110));
         dayLabel = new JLabel("Birthday:");
         String[] days = new String[31];
-        for (int i = 0; i < 31; i++) days[i] = (i + 1) + "";
-        dayMenu = new JComboBox<String>(days);
+        for (int i = 0; i < 31; i++) {
+            days[i] = (i + 1) + "";
+        }
+        dayMenu = new JComboBox<>(days);
         monthLabel = new JLabel("Month");
         String[] months =
                 new String[] {
@@ -101,7 +103,7 @@ public class DataPanel extends JPanel {
                         "November",
                         "December"
                 };
-        monthMenu = new JComboBox<String>(months);
+        monthMenu = new JComboBox<>(months);
         yearLabel = new JLabel("Year: ");
         yearField = new JTextField(3);
         datePanel.add(dayLabel);
@@ -160,19 +162,25 @@ public class DataPanel extends JPanel {
             String name = nameField.getText();
             String surname = surnameField.getText();
             String fm = "0";
-            if (f.isSelected()) fm = "f";
-            else if (m.isSelected()) fm = "m";
-            else
-                JOptionPane.showMessageDialog(
-                        null, "Please select a value \"Sex\" Field", "Error", JOptionPane.WARNING_MESSAGE);
+
+            if (f.isSelected()) {
+                fm = "f";
+            } else if (m.isSelected()) {
+                fm = "m";
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select a value \"Sex\" Field",
+                        "Error", JOptionPane.WARNING_MESSAGE);
+            }
+
             String birthday = (dayMenu.getSelectedIndex() + 1) + "";
             String month = (monthMenu.getSelectedIndex() + 1) + "";
             String year = yearField.getText();
             String town = townField.getText();
 
-            String fiscalCode = FCCalculations.surnameCalc(surname);
-            fiscalCode += FCCalculations.nameCalc(name);
+            String fiscalCode = FCCalculations.computeSurname (surname);
+            fiscalCode += FCCalculations.computeName (name);
             fiscalCode += FCCalculations.dateCalc(birthday, month, year, fm);
+
             try {
                 fiscalCode += FCCalculations.townCalc(town);
             } catch (IOException e) {
@@ -184,7 +192,10 @@ public class DataPanel extends JPanel {
             } catch (InterruptedException e) {
                 System.out.println("Error in calcListener");
             }
-            if (fiscalCode.length() == 16) resultField.setText("  " + fiscalCode);
+
+            if (fiscalCode.length() == 16) {
+                resultField.setText("  " + fiscalCode);
+            }
         }
     }
 }

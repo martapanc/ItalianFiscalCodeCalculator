@@ -16,74 +16,45 @@ import java.util.regex.Pattern;
 
 public class FCCalculations {
 
-    public static String surnameCalc(String input) {
+    private static final String CONSONANT_PATTERN = "[B-DF-HJ-NP-TV-Z]";
+    public static final String VOWEL_PATTERN = "[AEIOU]";
+
+    public static String computeSurname(String input) {
         String error = "0";
         input = replaceSpecialChars(input);
         if (allLetters(input)) {
             String result = "";
             int cont = 1;
             input = input.toUpperCase();
-            Pattern p;
-            Matcher m;
+
             if (input.length() < 3) {
                 result = input;
-                while (result.length() < 3) result += "X";
-            } else
+                while (result.length() < 3) {
+                    result += "X";
+                }
+            } else {
                 switch (howManyConsonants(input)) {
                     case 0:
                     { // if there are no consonants, it picks the first 3 vowels
-                        p = Pattern.compile("[AEIOU]");
-                        m = p.matcher(input);
-                        while (cont <= 3) {
-                            result += m.group(cont);
-                            cont++;
-                        }
+                        result = pickFirstThreeVowels ( input, result, cont );
                     }
                     break;
                     case 1:
                     { // 1 consonant case: pick the first consonant and first 2 vowels
-                        p = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
-                        m = p.matcher(input);
-                        while (m.find() && cont <= 1) {
-                            result += m.group();
-                            cont++;
-                        }
-                        p = Pattern.compile("[AEIOU]");
-                        m = p.matcher(input);
-                        cont = 1;
-                        while (m.find() && cont <= 2) {
-                            result += m.group();
-                            cont++;
-                        }
+                        result = pickFirstConsonantAndFirstTwoVowels ( input, result, cont );
                     }
                     break;
                     case 2:
                     { // 2 consonants case: pick the first 2 consonants and first vowel
-                        p = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
-                        m = p.matcher(input);
-                        while (m.find() && cont <= 2) {
-                            result += m.group();
-                            cont++;
-                        }
-                        p = Pattern.compile("[AEIOU]");
-                        m = p.matcher(input);
-                        cont = 1;
-                        while (m.find() && cont <= 1) {
-                            result += m.group();
-                            cont++;
-                        }
+                        result = pickFirstTwoConsonantsAndFirstVowel ( input, result, cont );
                     }
                     break;
                     default:
                     { // default case: pick the first 3 consonants
-                        p = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
-                        m = p.matcher(input);
-                        while (m.find() && cont <= 3) {
-                            result += m.group();
-                            cont++;
-                        }
+                        result = pickFirstThreeConsonants ( input, result, cont );
                     }
                 }
+            }
             return result;
         } else {
             JOptionPane.showMessageDialog(
@@ -95,7 +66,61 @@ public class FCCalculations {
         }
     }
 
-    public static String nameCalc(String inputName) {
+    private static String pickFirstThreeConsonants(String input, String result, int cont) {
+        Pattern p = Pattern.compile ( CONSONANT_PATTERN );
+        Matcher m = p.matcher ( input );
+        while (m.find() && cont <= 3) {
+            result += m.group();
+            cont++;
+        }
+        return result;
+    }
+
+    private static String pickFirstTwoConsonantsAndFirstVowel(String input, String result, int cont) {
+        Pattern p = Pattern.compile ( CONSONANT_PATTERN );
+        Matcher m = p.matcher ( input );
+        while (m.find() && cont <= 2) {
+            result += m.group();
+            cont++;
+        }
+        p = Pattern.compile( VOWEL_PATTERN );
+        m = p.matcher(input);
+        cont = 1;
+        while (m.find() && cont <= 1) {
+            result += m.group();
+            cont++;
+        }
+        return result;
+    }
+
+    private static String pickFirstConsonantAndFirstTwoVowels(String input, String result, int cont) {
+        Pattern p = Pattern.compile ( CONSONANT_PATTERN );
+        Matcher m = p.matcher ( input );
+        while (m.find() && cont <= 1) {
+            result += m.group();
+            cont++;
+        }
+        p = Pattern.compile( VOWEL_PATTERN );
+        m = p.matcher(input);
+        cont = 1;
+        while (m.find() && cont <= 2) {
+            result += m.group();
+            cont++;
+        }
+        return result;
+    }
+
+    private static String pickFirstThreeVowels(String input, String result, int cont) {
+        Pattern p = Pattern.compile ( VOWEL_PATTERN );
+        Matcher m = p.matcher ( input );
+        while (cont <= 3) {
+            result += m.group(cont);
+            cont++;
+        }
+        return result;
+    }
+
+    public static String computeName(String inputName) {
         String error = "0";
         inputName = replaceSpecialChars(inputName);
         if (allLetters(inputName)) {
@@ -109,65 +134,31 @@ public class FCCalculations {
             if (inputName.length() < 3) {
                 result = inputName;
                 while (result.length() < 3) result += "X";
-            } else
+            } else {
                 switch (howManyConsonants(inputName)) {
                     case 0:
                     { // if there are no consonants, it picks the first 3 vowels
-                        pattern = Pattern.compile("[AEIOU]");
-                        matcher = pattern.matcher(inputName);
-                        while (cont <= 3) {
-                            result += matcher.group(cont);
-                            cont++;
-                        }
+                        result = pickFirstThreeVowels ( inputName, result, cont );
                     }
                     break;
                     case 1:
                     { // 1 consonant case: pick the first consonant and first 2 vowels
-                        pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
-                        matcher = pattern.matcher(inputName);
-                        while (matcher.find() && cont <= 1) {
-                            result += matcher.group();
-                            cont++;
-                        }
-                        pattern = Pattern.compile("[AEIOU]");
-                        matcher = pattern.matcher(inputName);
-                        cont = 1;
-                        while (matcher.find() && cont <= 2) {
-                            result += matcher.group();
-                            cont++;
-                        }
+                        result = pickFirstConsonantAndFirstTwoVowels ( inputName, result, cont );
                     }
                     break;
                     case 2:
                     { // 2 consonants case: pick the first 2 consonants and first vowel
-                        pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
-                        matcher = pattern.matcher(inputName);
-                        while (matcher.find() && cont <= 2) {
-                            result += matcher.group();
-                            cont++;
-                        }
-                        pattern = Pattern.compile("[AEIOU]");
-                        matcher = pattern.matcher(inputName);
-                        cont = 1;
-                        while (matcher.find() && cont <= 1) {
-                            result += matcher.group();
-                            cont++;
-                        }
+                        result = pickFirstTwoConsonantsAndFirstVowel ( inputName, result, cont );
                     }
                     break;
                     case 3:
                     { // 3 consonant case pick all 3 consonants
-                        pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
-                        matcher = pattern.matcher(inputName);
-                        while (matcher.find() && cont <= 3) {
-                            result += matcher.group();
-                            cont++;
-                        }
+                        result = pickFirstThreeConsonants ( inputName, result, cont );
                     }
                     break;
                     default:
                     { // default case: pick 1st, 3rd and 4th consonant;
-                        pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]");
+                        pattern = Pattern.compile(  CONSONANT_PATTERN);
                         matcher = pattern.matcher(inputName);
                         while (matcher.find() && cont <= 4) {
                             if (cont != 2) result += matcher.group();
@@ -175,6 +166,7 @@ public class FCCalculations {
                         }
                     }
                 }
+            }
             return result;
 
         } else {
@@ -189,6 +181,7 @@ public class FCCalculations {
 
     public static String dateCalc(String dayStr, String monthStr, String yearStr, String fm) {
         String yearError = "0", dateError = "0";
+
         if (isYearValid(yearStr)) {
             if (isDateValid(dayStr, monthStr, yearStr)) {
                 String result = "";
@@ -196,9 +189,12 @@ public class FCCalculations {
                     int day = Integer.parseInt(dayStr);
                     int month = Integer.parseInt(monthStr);
                     int year = Integer.parseInt(yearStr);
-                    if (year % 100 >= 10) // get the last 2 digits of the year
+
+                    if (year % 100 >= 10) { // get the last 2 digits of the year
                         result += (year % 100);
-                    else result = result + 0 + (year % 100);
+                    } else {
+                        result = result + 0 + (year % 100);
+                    }
 
                     switch (month) { // get the letter corresponding to the month
                         case 1:
@@ -322,9 +318,10 @@ public class FCCalculations {
                     null, "File was not found", "Error", JOptionPane.WARNING_MESSAGE);
         }
 
-        if (townCode.equals("0"))
+        if (townCode.equals("0")) {
             JOptionPane.showMessageDialog(
                     null, "Town was not found", "Error", JOptionPane.WARNING_MESSAGE);
+        }
         return townCode;
     }
 
@@ -497,7 +494,9 @@ public class FCCalculations {
             str = str.toUpperCase();
             Pattern pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]+");
             Matcher matcher = pattern.matcher(str);
-            while (matcher.find()) match += matcher.group();
+            while (matcher.find()) {
+                match += matcher.group();
+            }
         }
         return match.length();
     }
@@ -508,7 +507,9 @@ public class FCCalculations {
             str = str.toUpperCase();
             Pattern pattern = Pattern.compile("[AEIOU]+");
             Matcher matcher = pattern.matcher(str);
-            while (matcher.find()) match += matcher.group();
+            while (matcher.find()) {
+                match += matcher.group();
+            }
         }
         return match.length();
     }
@@ -519,8 +520,8 @@ public class FCCalculations {
         if (allDigits(yearStr)) {
             year = Integer.parseInt(yearStr);
             return (year >= 1900 && year <= currentYear);
-
-        } else return false;
+        }
+        return false;
     }
 
     public static boolean isDateValid(String day, String month, String year) {
@@ -540,9 +541,9 @@ public class FCCalculations {
             } catch (ParseException e) {
                 return false;
             }
-
             return true;
-        } else return false;
+        }
+        return false;
     }
 
     public static String replaceSpecialChars(String input) {
