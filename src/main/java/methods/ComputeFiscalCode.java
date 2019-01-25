@@ -27,22 +27,22 @@ public class ComputeFiscalCode {
                 switch (howManyConsonants(input)) {
                     case 0:
                     { // if there are no consonants, it picks the first 3 vowels
-                        result = pickFirstThreeVowels ( input, result);
+                        result += pickFirstThreeVowels ( input);
                     }
                     break;
                     case 1:
                     { // 1 consonant case: pick the first consonant and first 2 vowels
-                        result = pickFirstConsonantAndFirstTwoVowels ( input, result);
+                        result += pickFirstConsonantAndFirstTwoVowels ( input);
                     }
                     break;
                     case 2:
                     { // 2 consonants case: pick the first 2 consonants and first vowel
-                        result = pickFirstTwoConsonantsAndFirstVowel ( input, result);
+                        result += pickFirstTwoConsonantsAndFirstVowel ( input);
                     }
                     break;
                     default:
                     { // default case: pick the first 3 consonants
-                        result = pickFirstThreeConsonants ( input, result);
+                        result += pickFirstThreeConsonants ( input);
                     }
                 }
             }
@@ -74,27 +74,27 @@ public class ComputeFiscalCode {
                 switch (howManyConsonants(inputName)) {
                     case 0:
                     { // if there are no consonants, it picks the first 3 vowels
-                        result = pickFirstThreeVowels ( inputName, result);
+                        result += pickFirstThreeVowels ( inputName );
                     }
                     break;
                     case 1:
                     { // 1 consonant case: pick the first consonant and first 2 vowels
-                        result = pickFirstConsonantAndFirstTwoVowels ( inputName, result);
+                        result += pickFirstConsonantAndFirstTwoVowels ( inputName );
                     }
                     break;
                     case 2:
                     { // 2 consonants case: pick the first 2 consonants and first vowel
-                        result = pickFirstTwoConsonantsAndFirstVowel ( inputName, result);
+                        result += pickFirstTwoConsonantsAndFirstVowel ( inputName );
                     }
                     break;
                     case 3:
                     { // 3 consonant case pick all 3 consonants
-                        result = pickFirstThreeConsonants ( inputName, result);
+                        result += pickFirstThreeConsonants ( inputName );
                     }
                     break;
                     default:
                     { // default case: pick 1st, 3rd and 4th consonant;
-                        result = pickFirstThirdAndFourthConsonant ( inputName, result );
+                        result += pickFirstThirdAndFourthConsonant ( inputName );
                     }
                 }
             }
