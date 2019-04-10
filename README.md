@@ -12,6 +12,7 @@ For example, given a user with the following data:
 - Surname: Rossi
 - Gender: F
 - Born in Milan (MI) on 12th July 1995
+
 the resulting Fiscal Code is: RSSMRA95L52F205R
 
 See https://en.wikipedia.org/wiki/Italian_fiscal_code_card for further details.
