@@ -2,7 +2,7 @@ package methods;
 
 public class Town {
 
-    String townName, townCode;
+    private String townName, townCode;
 
     public Town(String townName, String townCode) {
         this.townName = townName;

@@ -89,7 +89,7 @@ public class DataPanel extends JPanel {
         dayMenu = new JComboBox<>(days);
         monthLabel = new JLabel("Month");
         String[] months =
-                new String[] {
+                new String[]{
                         "January",
                         "February",
                         "March",
@@ -177,18 +177,18 @@ public class DataPanel extends JPanel {
             String year = yearField.getText();
             String town = townField.getText();
 
-            String fiscalCode = ComputeFiscalCode.computeSurname (surname);
-            fiscalCode += ComputeFiscalCode.computeName (name);
-            fiscalCode += ComputeFiscalCode.computeDateOfBirth (birthday, month, year, fm);
+            String fiscalCode = ComputeFiscalCode.computeSurname(surname);
+            fiscalCode += ComputeFiscalCode.computeName(name);
+            fiscalCode += ComputeFiscalCode.computeDateOfBirth(birthday, month, year, fm);
 
             try {
-                fiscalCode += ComputeFiscalCode.computeTownOfBirth (town);
+                fiscalCode += ComputeFiscalCode.computeTownOfBirth(town);
             } catch (IOException e) {
                 System.out.println("Town codes file not found");
             }
 
             try {
-                fiscalCode += ComputeFiscalCode.computeControlChar (fiscalCode);
+                fiscalCode += ComputeFiscalCode.computeControlChar(fiscalCode);
             } catch (InterruptedException e) {
                 System.out.println("Error in calcListener");
             }

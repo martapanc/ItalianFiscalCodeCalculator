@@ -2,8 +2,8 @@ package methods;
 
 class EvenThread implements Runnable {
 
-    String fisCode;
-    int evenSum;
+    private String fisCode;
+    private int evenSum;
 
     public EvenThread(String fisCode, int evenSum) {
         this.fisCode = fisCode;
@@ -15,183 +15,147 @@ class EvenThread implements Runnable {
         // calculate sum of character values at even position
         for (int i = 2; i <= 14; i += 2) {
             switch (fisCode.charAt(i - 1)) {
-                case '0':
-                {
+                case '0': {
                     evenSum += 0;
                     break;
                 }
-                case '1':
-                {
+                case '1': {
                     evenSum += 1;
                     break;
                 }
-                case '2':
-                {
+                case '2': {
                     evenSum += 2;
                     break;
                 }
-                case '3':
-                {
+                case '3': {
                     evenSum += 3;
                     break;
                 }
-                case '4':
-                {
+                case '4': {
                     evenSum += 4;
                     break;
                 }
-                case '5':
-                {
+                case '5': {
                     evenSum += 5;
                     break;
                 }
-                case '6':
-                {
+                case '6': {
                     evenSum += 6;
                     break;
                 }
-                case '7':
-                {
+                case '7': {
                     evenSum += 7;
                     break;
                 }
-                case '8':
-                {
+                case '8': {
                     evenSum += 8;
                     break;
                 }
-                case '9':
-                {
+                case '9': {
                     evenSum += 9;
                     break;
                 }
-                case 'A':
-                {
+                case 'A': {
                     evenSum += 0;
                     break;
                 }
-                case 'B':
-                {
+                case 'B': {
                     evenSum += 1;
                     break;
                 }
-                case 'C':
-                {
+                case 'C': {
                     evenSum += 2;
                     break;
                 }
-                case 'D':
-                {
+                case 'D': {
                     evenSum += 3;
                     break;
                 }
-                case 'E':
-                {
+                case 'E': {
                     evenSum += 4;
                     break;
                 }
-                case 'F':
-                {
+                case 'F': {
                     evenSum += 5;
                     break;
                 }
-                case 'G':
-                {
+                case 'G': {
                     evenSum += 6;
                     break;
                 }
-                case 'H':
-                {
+                case 'H': {
                     evenSum += 7;
                     break;
                 }
-                case 'I':
-                {
+                case 'I': {
                     evenSum += 8;
                     break;
                 }
-                case 'J':
-                {
+                case 'J': {
                     evenSum += 9;
                     break;
                 }
-                case 'K':
-                {
+                case 'K': {
                     evenSum += 10;
                     break;
                 }
-                case 'L':
-                {
+                case 'L': {
                     evenSum += 11;
                     break;
                 }
-                case 'M':
-                {
+                case 'M': {
                     evenSum += 12;
                     break;
                 }
-                case 'N':
-                {
+                case 'N': {
                     evenSum += 13;
                     break;
                 }
-                case 'O':
-                {
+                case 'O': {
                     evenSum += 14;
                     break;
                 }
-                case 'P':
-                {
+                case 'P': {
                     evenSum += 15;
                     break;
                 }
-                case 'Q':
-                {
+                case 'Q': {
                     evenSum += 16;
                     break;
                 }
-                case 'R':
-                {
+                case 'R': {
                     evenSum += 17;
                     break;
                 }
-                case 'S':
-                {
+                case 'S': {
                     evenSum += 18;
                     break;
                 }
-                case 'T':
-                {
+                case 'T': {
                     evenSum += 19;
                     break;
                 }
-                case 'U':
-                {
+                case 'U': {
                     evenSum += 20;
                     break;
                 }
-                case 'V':
-                {
+                case 'V': {
                     evenSum += 21;
                     break;
                 }
-                case 'W':
-                {
+                case 'W': {
                     evenSum += 22;
                     break;
                 }
-                case 'X':
-                {
+                case 'X': {
                     evenSum += 23;
                     break;
                 }
-                case 'Y':
-                {
+                case 'Y': {
                     evenSum += 24;
                     break;
                 }
-                case 'Z':
-                {
+                case 'Z': {
                     evenSum += 25;
                     break;
                 }
@@ -206,8 +170,8 @@ class EvenThread implements Runnable {
 
 class OddThread implements Runnable {
 
-    String fisCode;
-    int oddSum;
+    private String fisCode;
+    private int oddSum;
 
     public OddThread(String fisCode, int oddSum) {
         this.fisCode = fisCode;
@@ -219,183 +183,147 @@ class OddThread implements Runnable {
         // calculate sum of character values at odd position
         for (int i = 1; i <= 15; i += 2) {
             switch (fisCode.charAt(i - 1)) {
-                case '0':
-                {
+                case '0': {
                     oddSum += 1;
                     break;
                 }
-                case '1':
-                {
+                case '1': {
                     oddSum += 0;
                     break;
                 }
-                case '2':
-                {
+                case '2': {
                     oddSum += 5;
                     break;
                 }
-                case '3':
-                {
+                case '3': {
                     oddSum += 7;
                     break;
                 }
-                case '4':
-                {
+                case '4': {
                     oddSum += 9;
                     break;
                 }
-                case '5':
-                {
+                case '5': {
                     oddSum += 13;
                     break;
                 }
-                case '6':
-                {
+                case '6': {
                     oddSum += 15;
                     break;
                 }
-                case '7':
-                {
+                case '7': {
                     oddSum += 17;
                     break;
                 }
-                case '8':
-                {
+                case '8': {
                     oddSum += 19;
                     break;
                 }
-                case '9':
-                {
+                case '9': {
                     oddSum += 21;
                     break;
                 }
-                case 'A':
-                {
+                case 'A': {
                     oddSum += 1;
                     break;
                 }
-                case 'B':
-                {
+                case 'B': {
                     oddSum += 0;
                     break;
                 }
-                case 'C':
-                {
+                case 'C': {
                     oddSum += 5;
                     break;
                 }
-                case 'D':
-                {
+                case 'D': {
                     oddSum += 7;
                     break;
                 }
-                case 'E':
-                {
+                case 'E': {
                     oddSum += 9;
                     break;
                 }
-                case 'F':
-                {
+                case 'F': {
                     oddSum += 13;
                     break;
                 }
-                case 'G':
-                {
+                case 'G': {
                     oddSum += 15;
                     break;
                 }
-                case 'H':
-                {
+                case 'H': {
                     oddSum += 17;
                     break;
                 }
-                case 'I':
-                {
+                case 'I': {
                     oddSum += 19;
                     break;
                 }
-                case 'J':
-                {
+                case 'J': {
                     oddSum += 21;
                     break;
                 }
-                case 'K':
-                {
+                case 'K': {
                     oddSum += 2;
                     break;
                 }
-                case 'L':
-                {
+                case 'L': {
                     oddSum += 4;
                     break;
                 }
-                case 'M':
-                {
+                case 'M': {
                     oddSum += 18;
                     break;
                 }
-                case 'N':
-                {
+                case 'N': {
                     oddSum += 20;
                     break;
                 }
-                case 'O':
-                {
+                case 'O': {
                     oddSum += 11;
                     break;
                 }
-                case 'P':
-                {
+                case 'P': {
                     oddSum += 3;
                     break;
                 }
-                case 'Q':
-                {
+                case 'Q': {
                     oddSum += 6;
                     break;
                 }
-                case 'R':
-                {
+                case 'R': {
                     oddSum += 8;
                     break;
                 }
-                case 'S':
-                {
+                case 'S': {
                     oddSum += 12;
                     break;
                 }
-                case 'T':
-                {
+                case 'T': {
                     oddSum += 14;
                     break;
                 }
-                case 'U':
-                {
+                case 'U': {
                     oddSum += 16;
                     break;
                 }
-                case 'V':
-                {
+                case 'V': {
                     oddSum += 10;
                     break;
                 }
-                case 'W':
-                {
+                case 'W': {
                     oddSum += 22;
                     break;
                 }
-                case 'X':
-                {
+                case 'X': {
                     oddSum += 25;
                     break;
                 }
-                case 'Y':
-                {
+                case 'Y': {
                     oddSum += 24;
                     break;
                 }
-                case 'Z':
-                {
+                case 'Z': {
                     oddSum += 23;
                     break;
                 }

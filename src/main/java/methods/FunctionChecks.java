@@ -18,26 +18,26 @@ public class FunctionChecks {
     }
 
     public static int howManyConsonants(String string) {
-        String match = "";
-        if (isAllLetters (string)) {
+        StringBuilder match = new StringBuilder();
+        if (isAllLetters(string)) {
             string = string.toUpperCase();
             Pattern pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]+");
             Matcher matcher = pattern.matcher(string);
             while (matcher.find()) {
-                match += matcher.group();
+                match.append(matcher.group());
             }
         }
         return match.length();
     }
 
     public static int howManyVowels(String string) {
-        String match = "";
-        if (isAllLetters (string)) {
+        StringBuilder match = new StringBuilder();
+        if (isAllLetters(string)) {
             string = string.toUpperCase();
             Pattern pattern = Pattern.compile("[AEIOU]+");
             Matcher matcher = pattern.matcher(string);
             while (matcher.find()) {
-                match += matcher.group();
+                match.append(matcher.group());
             }
         }
         return match.length();
@@ -46,7 +46,7 @@ public class FunctionChecks {
     public static boolean isYearValid(String yearString) {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         int year;
-        if (isAllDigits (yearString)) {
+        if (isAllDigits(yearString)) {
             year = Integer.parseInt(yearString);
             return (year >= 1900 && year <= currentYear);
         }

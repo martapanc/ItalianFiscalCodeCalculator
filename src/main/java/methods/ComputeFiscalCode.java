@@ -1,52 +1,61 @@
 package methods;
 
-import javax.swing.*;
-import java.io.*;
-import java.util.*;
+import javax.swing.JOptionPane;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static methods.FunctionChecks.*;
-import static methods.NameAndSurnameComputations.*;
+import static methods.FunctionChecks.howManyConsonants;
+import static methods.FunctionChecks.isAllLetters;
+import static methods.FunctionChecks.isDateValid;
+import static methods.FunctionChecks.isYearValid;
+import static methods.FunctionChecks.replaceSpecialChars;
+import static methods.NameAndSurnameComputations.pickFirstConsonantAndFirstTwoVowels;
+import static methods.NameAndSurnameComputations.pickFirstThirdAndFourthConsonant;
+import static methods.NameAndSurnameComputations.pickFirstThreeConsonants;
+import static methods.NameAndSurnameComputations.pickFirstThreeVowels;
+import static methods.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
 
 public class ComputeFiscalCode {
 
     public static String computeSurname(String input) {
         String error = "0";
         input = replaceSpecialChars(input);
-        if (isAllLetters (input)) {
-            String result = "";
+        if (isAllLetters(input)) {
+            StringBuilder result = new StringBuilder();
             input = input.toUpperCase();
 
             if (input.length() < 3) {
-                result = input;
+                result = new StringBuilder(input);
                 while (result.length() < 3) {
-                    result += "X";
+                    result.append("X");
                 }
             } else {
                 switch (howManyConsonants(input)) {
-                    case 0:
-                    { // if there are no consonants, it picks the first 3 vowels
-                        result += pickFirstThreeVowels ( input);
+                    case 0: { // if there are no consonants, it picks the first 3 vowels
+                        result.append(pickFirstThreeVowels(input));
                     }
                     break;
-                    case 1:
-                    { // 1 consonant case: pick the first consonant and first 2 vowels
-                        result += pickFirstConsonantAndFirstTwoVowels ( input);
+                    case 1: { // 1 consonant case: pick the first consonant and first 2 vowels
+                        result.append(pickFirstConsonantAndFirstTwoVowels(input));
                     }
                     break;
-                    case 2:
-                    { // 2 consonants case: pick the first 2 consonants and first vowel
-                        result += pickFirstTwoConsonantsAndFirstVowel ( input);
+                    case 2: { // 2 consonants case: pick the first 2 consonants and first vowel
+                        result.append(pickFirstTwoConsonantsAndFirstVowel(input));
                     }
                     break;
-                    default:
-                    { // default case: pick the first 3 consonants
-                        result += pickFirstThreeConsonants ( input);
+                    default: { // default case: pick the first 3 consonants
+                        result.append(pickFirstThreeConsonants(input));
                     }
                 }
             }
-            return result;
+            return result.toString();
         } else {
             JOptionPane.showMessageDialog(
                     null,
@@ -60,7 +69,7 @@ public class ComputeFiscalCode {
     public static String computeName(String inputName) {
         String error = "0";
         inputName = replaceSpecialChars(inputName);
-        if (isAllLetters (inputName)) {
+        if (isAllLetters(inputName)) {
             String result = "";
             inputName = inputName.toUpperCase();
             Pattern pattern;
@@ -72,29 +81,24 @@ public class ComputeFiscalCode {
                 while (result.length() < 3) result += "X";
             } else {
                 switch (howManyConsonants(inputName)) {
-                    case 0:
-                    { // if there are no consonants, it picks the first 3 vowels
-                        result += pickFirstThreeVowels ( inputName );
+                    case 0: { // if there are no consonants, it picks the first 3 vowels
+                        result += pickFirstThreeVowels(inputName);
                     }
                     break;
-                    case 1:
-                    { // 1 consonant case: pick the first consonant and first 2 vowels
-                        result += pickFirstConsonantAndFirstTwoVowels ( inputName );
+                    case 1: { // 1 consonant case: pick the first consonant and first 2 vowels
+                        result += pickFirstConsonantAndFirstTwoVowels(inputName);
                     }
                     break;
-                    case 2:
-                    { // 2 consonants case: pick the first 2 consonants and first vowel
-                        result += pickFirstTwoConsonantsAndFirstVowel ( inputName );
+                    case 2: { // 2 consonants case: pick the first 2 consonants and first vowel
+                        result += pickFirstTwoConsonantsAndFirstVowel(inputName);
                     }
                     break;
-                    case 3:
-                    { // 3 consonant case pick all 3 consonants
-                        result += pickFirstThreeConsonants ( inputName );
+                    case 3: { // 3 consonant case pick all 3 consonants
+                        result += pickFirstThreeConsonants(inputName);
                     }
                     break;
-                    default:
-                    { // default case: pick 1st, 3rd and 4th consonant;
-                        result += pickFirstThirdAndFourthConsonant ( inputName );
+                    default: { // default case: pick 1st, 3rd and 4th consonant;
+                        result += pickFirstThirdAndFourthConsonant(inputName);
                     }
                 }
             }
@@ -128,76 +132,62 @@ public class ComputeFiscalCode {
                     }
 
                     switch (month) { // get the letter corresponding to the month
-                        case 1:
-                        {
+                        case 1: {
                             result += "A";
                             break;
                         }
-                        case 2:
-                        {
+                        case 2: {
                             result += "B";
                             break;
                         }
-                        case 3:
-                        {
+                        case 3: {
                             result += "C";
                             break;
                         }
-                        case 4:
-                        {
+                        case 4: {
                             result += "D";
                             break;
                         }
-                        case 5:
-                        {
+                        case 5: {
                             result += "E";
                             break;
                         }
-                        case 6:
-                        {
+                        case 6: {
                             result += "H";
                             break;
                         }
-                        case 7:
-                        {
+                        case 7: {
                             result += "L";
                             break;
                         }
-                        case 8:
-                        {
+                        case 8: {
                             result += "M";
                             break;
                         }
-                        case 9:
-                        {
+                        case 9: {
                             result += "P";
                             break;
                         }
-                        case 10:
-                        {
+                        case 10: {
                             result += "R";
                             break;
                         }
-                        case 11:
-                        {
+                        case 11: {
                             result += "S";
                             break;
                         }
-                        case 12:
-                        {
+                        case 12: {
                             result += "T";
                             break;
                         }
                     }
                     switch (gender) { // add 40 in female case, and add 0 in case the date has only one digit
                         // (possible only in male case)
-                        case "f":
-                        {
+                        case "f": {
                             result += (day + 40);
                             break;
                         }
-                        case "m":
-                        {
+                        case "m": {
                             result += (day <= 10 ? "0" + day : day);
                             break;
                         }
@@ -226,7 +216,7 @@ public class ComputeFiscalCode {
         townString = townString.toUpperCase();
         try (BufferedReader read =
                      new BufferedReader(
-                             new InputStreamReader( ComputeFiscalCode.class.getResourceAsStream("/TownCodeList.txt")))) {
+                             new InputStreamReader(ComputeFiscalCode.class.getResourceAsStream("/TownCodeList.txt")))) {
             String line = read.readLine();
             String[] town;
             while (line != null) {
@@ -274,133 +264,107 @@ public class ComputeFiscalCode {
             // The remainder of the division is the control character
             int sum = (oddSum + evenSum) % 26;
             switch (sum) {
-                case 0:
-                {
+                case 0: {
                     control = "A";
                     break;
                 }
-                case 1:
-                {
+                case 1: {
                     control = "B";
                     break;
                 }
-                case 2:
-                {
+                case 2: {
                     control = "C";
                     break;
                 }
-                case 3:
-                {
+                case 3: {
                     control = "D";
                     break;
                 }
-                case 4:
-                {
+                case 4: {
                     control = "E";
                     break;
                 }
-                case 5:
-                {
+                case 5: {
                     control = "F";
                     break;
                 }
-                case 6:
-                {
+                case 6: {
                     control = "G";
                     break;
                 }
-                case 7:
-                {
+                case 7: {
                     control = "H";
                     break;
                 }
-                case 8:
-                {
+                case 8: {
                     control = "I";
                     break;
                 }
-                case 9:
-                {
+                case 9: {
                     control = "J";
                     break;
                 }
-                case 10:
-                {
+                case 10: {
                     control = "K";
                     break;
                 }
-                case 11:
-                {
+                case 11: {
                     control = "L";
                     break;
                 }
-                case 12:
-                {
+                case 12: {
                     control = "M";
                     break;
                 }
-                case 13:
-                {
+                case 13: {
                     control = "N";
                     break;
                 }
-                case 14:
-                {
+                case 14: {
                     control = "O";
                     break;
                 }
-                case 15:
-                {
+                case 15: {
                     control = "P";
                     break;
                 }
-                case 16:
-                {
+                case 16: {
                     control = "Q";
                     break;
                 }
-                case 17:
-                {
+                case 17: {
                     control = "R";
                     break;
                 }
-                case 18:
-                {
+                case 18: {
                     control = "S";
                     break;
                 }
-                case 19:
-                {
+                case 19: {
                     control = "T";
                     break;
                 }
-                case 20:
-                {
+                case 20: {
                     control = "U";
                     break;
                 }
-                case 21:
-                {
+                case 21: {
                     control = "V";
                     break;
                 }
-                case 22:
-                {
+                case 22: {
                     control = "W";
                     break;
                 }
-                case 23:
-                {
+                case 23: {
                     control = "X";
                     break;
                 }
-                case 24:
-                {
+                case 24: {
                     control = "Y";
                     break;
                 }
-                case 25:
-                {
+                case 25: {
                     control = "Z";
                     break;
                 }
