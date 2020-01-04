@@ -1,6 +1,6 @@
 package methods;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,8 +8,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static methods.FunctionChecks.howManyConsonants;
 import static methods.FunctionChecks.isAllLetters;
@@ -27,6 +25,7 @@ public class ComputeFiscalCode {
     public static String computeSurname(String input) {
         String error = "0";
         input = replaceSpecialChars(input);
+
         if (isAllLetters(input)) {
             StringBuilder result = new StringBuilder();
             input = input.toUpperCase();
@@ -38,21 +37,17 @@ public class ComputeFiscalCode {
                 }
             } else {
                 switch (howManyConsonants(input)) {
-                    case 0: { // if there are no consonants, it picks the first 3 vowels
+                    case 0:
                         result.append(pickFirstThreeVowels(input));
-                    }
-                    break;
-                    case 1: { // 1 consonant case: pick the first consonant and first 2 vowels
+                        break;
+                    case 1:
                         result.append(pickFirstConsonantAndFirstTwoVowels(input));
-                    }
-                    break;
-                    case 2: { // 2 consonants case: pick the first 2 consonants and first vowel
+                        break;
+                    case 2:
                         result.append(pickFirstTwoConsonantsAndFirstVowel(input));
-                    }
-                    break;
-                    default: { // default case: pick the first 3 consonants
+                        break;
+                    default:
                         result.append(pickFirstThreeConsonants(input));
-                    }
                 }
             }
             return result.toString();
@@ -70,39 +65,32 @@ public class ComputeFiscalCode {
         String error = "0";
         inputName = replaceSpecialChars(inputName);
         if (isAllLetters(inputName)) {
-            String result = "";
+            StringBuilder result = new StringBuilder();
             inputName = inputName.toUpperCase();
-            Pattern pattern;
-            Matcher matcher;
 
-            // Case name length less than 3
             if (inputName.length() < 3) {
-                result = inputName;
-                while (result.length() < 3) result += "X";
+                result = new StringBuilder(inputName);
+                while (result.length() < 3)
+                    result.append("X");
             } else {
                 switch (howManyConsonants(inputName)) {
-                    case 0: { // if there are no consonants, it picks the first 3 vowels
-                        result += pickFirstThreeVowels(inputName);
-                    }
-                    break;
-                    case 1: { // 1 consonant case: pick the first consonant and first 2 vowels
-                        result += pickFirstConsonantAndFirstTwoVowels(inputName);
-                    }
-                    break;
-                    case 2: { // 2 consonants case: pick the first 2 consonants and first vowel
-                        result += pickFirstTwoConsonantsAndFirstVowel(inputName);
-                    }
-                    break;
-                    case 3: { // 3 consonant case pick all 3 consonants
-                        result += pickFirstThreeConsonants(inputName);
-                    }
-                    break;
-                    default: { // default case: pick 1st, 3rd and 4th consonant;
-                        result += pickFirstThirdAndFourthConsonant(inputName);
-                    }
+                    case 0:
+                        result.append(pickFirstThreeVowels(inputName));
+                        break;
+                    case 1:
+                        result.append(pickFirstConsonantAndFirstTwoVowels(inputName));
+                        break;
+                    case 2:
+                        result.append(pickFirstTwoConsonantsAndFirstVowel(inputName));
+                        break;
+                    case 3:
+                        result.append(pickFirstThreeConsonants(inputName));
+                        break;
+                    default:
+                        result.append(pickFirstThirdAndFourthConsonant(inputName));
                 }
             }
-            return result;
+            return result.toString();
 
         } else {
             JOptionPane.showMessageDialog(
@@ -125,13 +113,15 @@ public class ComputeFiscalCode {
                     int month = Integer.parseInt(monthString);
                     int year = Integer.parseInt(yearString);
 
-                    if (year % 100 >= 10) { // get the last 2 digits of the year
+                    // get the last 2 digits of the year
+                    if (year % 100 >= 10) {
                         result += (year % 100);
                     } else {
                         result = result + 0 + (year % 100);
                     }
 
-                    switch (month) { // get the letter corresponding to the month
+                    // get the letter corresponding to the month
+                    switch (month) {
                         case 1: {
                             result += "A";
                             break;
@@ -181,8 +171,7 @@ public class ComputeFiscalCode {
                             break;
                         }
                     }
-                    switch (gender) { // add 40 in female case, and add 0 in case the date has only one digit
-                        // (possible only in male case)
+                    switch (gender) {
                         case "f": {
                             result += (day + 40);
                             break;

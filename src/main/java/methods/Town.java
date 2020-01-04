@@ -13,18 +13,10 @@ public class Town {
         return townName;
     }
 
-    public void setTownName(String newName) {
-        townName = newName;
-    }
-
     public String getTownCode() {
         return townCode;
     }
-
-    public void setTownCode(String newCode) {
-        townCode = newCode;
-    }
-
+    
     public String toString() {
         return getTownName() + " " + getTownCode();
     }
